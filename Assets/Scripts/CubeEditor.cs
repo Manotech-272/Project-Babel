@@ -5,16 +5,18 @@ using UnityEngine;
 [ExecuteInEditMode]
 [SelectionBase]
 [RequireComponent(typeof(Waypoint))]
+
+
 public class CubeEditor : MonoBehaviour
 {
 
 
 
-    
 
 
 
 
+    [SerializeField] bool isFloor = true;
 
     Waypoint waypoint;
 
@@ -44,9 +46,14 @@ public class CubeEditor : MonoBehaviour
         int unitGridSize = waypoint.GetUnitGridSize();
 
         TextMesh textMesh = GetComponentInChildren<TextMesh>();
-        string labelText = waypoint.GetGridPos().x  + "," + waypoint.GetGridPos().y ;
-        textMesh.text = labelText;
-        gameObject.name = labelText;
+        if (isFloor)
+        {
+            string labelText = waypoint.GetGridPos().x + "," + waypoint.GetGridPos().y;
+            textMesh.text = labelText;
+            gameObject.name = labelText;
+        }
+        
+       
     }
 
     private void SnapToGrid()
