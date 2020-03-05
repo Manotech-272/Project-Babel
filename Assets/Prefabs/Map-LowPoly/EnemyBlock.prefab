@@ -46,9 +46,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90077daff46fa7d45a2080b95c8c2fa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  exploredColor: {r: 0, g: 0, b: 0, a: 0}
   parent: {fileID: 0}
   isExplored: 0
+  isPlaceable: 0
+  red: {fileID: 0}
+  dark: {fileID: 0}
 --- !u!114 &7203999328291144693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61,6 +63,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a165ca3ccd101db4b9db0f8d6562ebab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isFloor: 1
 --- !u!1 &1573845391430836575
 GameObject:
   m_ObjectHideFlags: 0
@@ -233,7 +236,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5043539150583454124}
-  m_Text: -8,-6
+  m_Text: -6,6
   m_OffsetZ: 0
   m_CharacterSize: 0.006
   m_LineSpacing: 1

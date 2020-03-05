@@ -1,12 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityStandardAssets.CrossPlatformInput;
 
 public class Waypoint : MonoBehaviour
 {
 
-    [SerializeField] Color exploredColor;
 
+    
 
     const int unitGridSize = 10;
 
@@ -16,9 +15,17 @@ public class Waypoint : MonoBehaviour
 
     public bool isExplored = false;
 
+    public bool isPlaceable = true;
+
+    Shader shader;
+
+    [SerializeField] Material red;
+    [SerializeField] Material dark;
+
+
     void Start()
     {
-        
+       
     }
 
     
@@ -35,16 +42,51 @@ public class Waypoint : MonoBehaviour
                     );
     }
 
-    public void SetTopColor(Color color)
-    {
-        transform.Find("Up").GetComponent<MeshRenderer>().material.color = color;
-    }
-
     void Update()
     {
-        if (isExplored)
+        
+    }
+
+    private void OnMouseOver()
+    {
+        HighlightTargetBlock(true);
+
+        if (CrossPlatformInputManager.GetButtonDown("Fire1") && isPlaceable)
         {
-            SetTopColor(exploredColor);
+            FindObjectOfType<TowerFactory>().AddTower(this);
+            
         }
     }
+
+    private void HighlightTargetBlock( bool highlight)
+    {
+        if (isPlaceable)
+        {
+            if (highlight)
+            {
+                transform.Find("Crate").GetComponent<MeshRenderer>().material.shader = Shader.Find("Self-Illumin/Outlined Diffuse");
+            }
+            else
+            {
+                transform.Find("Crate").GetComponent<MeshRenderer>().material.shader = Shader.Find("Standard");
+            }
+        }
+        else
+        {
+            if (highlight)
+            {
+                transform.Find("Crate").GetComponent<MeshRenderer>().material = red;
+            }
+            else
+            {
+                transform.Find("Crate").GetComponent<MeshRenderer>().material = dark;
+            }
+        }
+    }
+
+    private void OnMouseExit()
+    {
+        HighlightTargetBlock(false);
+    }
 }
+

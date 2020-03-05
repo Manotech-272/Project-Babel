@@ -155,6 +155,7 @@ MonoBehaviour:
   exploredColor: {r: 0, g: 0, b: 0, a: 0}
   parent: {fileID: 0}
   isExplored: 0
+  isPlaceable: 0
 --- !u!114 &8193252258075111986
 MonoBehaviour:
   m_ObjectHideFlags: 0

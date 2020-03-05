@@ -28,24 +28,26 @@ public class PathFinder : MonoBehaviour
 
     public List<Waypoint> GetPath()
     {
-        LoadBlocks();
-        ColorStartAndEnd();
-        BreadthFirstSearch();
-        CreatePath();
+        if (path.Count == 0)
+        {
+            LoadBlocks();
+           
+            BreadthFirstSearch();
+            CreatePath();
+           
+        }
+
         return path;
+
     }
 
 
-    private void ColorStartAndEnd()
-    {
-        startWaypoint.SetTopColor(Color.green);
-        endWaypoint.SetTopColor(Color.red);
-    }
+   
 
     private void LoadBlocks()
     {
         Waypoint[] waypoints = GetComponentsInChildren<Waypoint>();
-        print(waypoints.Length);
+
         foreach(Waypoint waypoint in waypoints)
         { 
             if (grid.ContainsKey(waypoint.GetGridPos()))
@@ -116,16 +118,19 @@ public class PathFinder : MonoBehaviour
     private void CreatePath()
     {
         path.Add(endWaypoint);
+        endWaypoint.isPlaceable = false;
 
         Waypoint previous = endWaypoint.parent;
         
         while (!previous.Equals(startWaypoint))
         {
             path.Add(previous);
+            previous.isPlaceable = false;
             previous = previous.parent;
         }
 
         path.Add(startWaypoint);
+        startWaypoint.isPlaceable = false;
         path.Reverse();
     }
 }

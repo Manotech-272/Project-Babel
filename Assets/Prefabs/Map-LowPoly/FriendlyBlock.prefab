@@ -78,7 +78,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1481115699284119205}
-  m_Text: 0,0
+  m_Text: 0,3
   m_OffsetZ: 0
   m_CharacterSize: 0.006
   m_LineSpacing: 1
@@ -197,6 +197,8 @@ GameObject:
   - component: {fileID: 4946314447382953428}
   - component: {fileID: 3641729825664308451}
   - component: {fileID: 3641729825664308476}
+  - component: {fileID: 8231280909369739168}
+  - component: {fileID: 1569732309645897794}
   m_Layer: 0
   m_Name: FriendlyBlock
   m_TagString: Untagged
@@ -232,9 +234,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90077daff46fa7d45a2080b95c8c2fa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  exploredColor: {r: 0, g: 0, b: 0, a: 0}
+  turret: {fileID: 2244853454869297010, guid: 9d9ed2baf67f43a41bca37409a2e69eb, type: 3}
   parent: {fileID: 0}
   isExplored: 0
+  isPlaceable: 1
+  red: {fileID: 2100000, guid: 9cb3de8a2adf8498db8984d27f58e0be, type: 2}
+  dark: {fileID: 2100000, guid: c8b8b01a306984adb983e9cf5b6a7183, type: 2}
 --- !u!114 &3641729825664308476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -247,6 +252,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a165ca3ccd101db4b9db0f8d6562ebab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isFloor: 1
+--- !u!64 &8231280909369739168
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4946314447382953429}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300034, guid: fe8bb5221257840c2805e380fc94544a, type: 3}
+--- !u!65 &1569732309645897794
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4946314447382953429}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.25, y: 1, z: 1.25}
+  m_Center: {x: 0, y: -0.45, z: 0}
 --- !u!1001 &8015401199787972063
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -256,7 +289,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1377450484918214, guid: 58cfa1700ab92434baac195d7b2ef5fe, type: 3}
       propertyPath: m_Name
-      value: Crate_003
+      value: Crate
       objectReference: {fileID: 0}
     - target: {fileID: 4295895893050612, guid: 58cfa1700ab92434baac195d7b2ef5fe, type: 3}
       propertyPath: m_LocalPosition.x
@@ -307,6 +340,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[2]
       value: 
       objectReference: {fileID: 2100000, guid: 087879ec1e51e4291a8e1eb36249ec24, type: 2}
+    - target: {fileID: 64667440459516968, guid: 58cfa1700ab92434baac195d7b2ef5fe,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58cfa1700ab92434baac195d7b2ef5fe, type: 3}
 --- !u!4 &8012800888268165419 stripped

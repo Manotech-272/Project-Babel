@@ -1,10 +1,19 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-   
+    [Range(1,50)]  [SerializeField] float enemySpeed = 2f;
+    [Range(1, 50)] [SerializeField] int damageToBase = 1;
+
+    BaseHealth baseH;
+
+    private void Awake()
+    {
+        baseH = FindObjectOfType<BaseHealth>();
+    }
     void Start()
     {
         PathFinder pathFinder = FindObjectOfType<PathFinder>();
@@ -21,13 +30,21 @@ public class EnemyMovement : MonoBehaviour
         {
             transform.position = waypoint.transform.position;
            
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(1/enemySpeed *2);
 
         }
-        // Debug.Log("Ending patrol");
+
+        StartGoalReachedSequence();
+        
+        
     }
 
-    // Update is called once per frame
+    private void StartGoalReachedSequence()
+    {
+        SendMessage("ReachedEnemyBaseSequece");
+        baseH.ProcessBaseDamage(damageToBase);
+    }
+
     void Update()
     {
        
